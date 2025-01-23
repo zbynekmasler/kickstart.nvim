@@ -7,6 +7,10 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
+        python = {
+          command = 'flake8',
+          args = { '--max-line-length=100' },
+        },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
