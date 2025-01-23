@@ -618,7 +618,17 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {
+          settings = {
+            python = {
+              analysis = {
+                typeCheckingMode = 'basic', -- Options: "off", "basic", "strict"
+                autoImportCompletions = true,
+                diagnosticMode = 'workspace', -- Options: "workspace", "openFilesOnly"
+              },
+            },
+          },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
