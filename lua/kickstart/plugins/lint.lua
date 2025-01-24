@@ -7,10 +7,10 @@ return {
       local lint = require 'lint'
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
-        python = {
-          command = 'flake8',
-          args = { '--max-line-length=100' },
-        },
+        -- python = {
+        -- command = 'flake8',
+        --  args = { '--max-line-length=100' },
+        -- },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -55,7 +55,9 @@ return {
           -- avoid superfluous noise, notably within the handy LSP pop-ups that
           -- describe the hovered symbol using Markdown.
           if vim.opt_local.modifiable:get() then
-            lint.try_lint()
+            if lint.linters_by_ft[vim.bo.filetype] then
+              lint.try_lint()
+            end
           end
         end,
       })
